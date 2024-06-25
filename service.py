@@ -58,6 +58,8 @@ def index():
 # Replace with the following:
 app.run(host="127.0.0.1")
 
+
+
 @app.route("/api/product/hash", methods=["GET"])
 def getProductHash():
     import hashlib
