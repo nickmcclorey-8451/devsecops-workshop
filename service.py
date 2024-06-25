@@ -24,8 +24,7 @@ def api_product_add():
     product = Product(0, product_json["name"])
 
     # Logging should not have the format string. Replace with the following:
-    # logging.info("adding product %s", product.name)
-    logging.info("adding product {0}".format(product.name)) 
+    logging.info("adding product %s", product.name)
     success = db.add_product(db_connection, product)
 
     # The else is not necessary here, remove it by applying the suggested fix.
