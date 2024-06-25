@@ -57,3 +57,18 @@ def index():
 # Bind to localhost for development purposes and attach to the address 127.0.0.1
 # Replace with the following:
 app.run(host="127.0.0.1")
+
+
+
+@app.route("/api/product/hash", methods=["GET"])
+def getProductHash():
+    import hashlib
+    products = db.get_products(db_connection, 100, 0)
+    product_id = int(request.args.get('pid', 0))
+    if product_id == 0:
+        return "error, specify a product id", 500
+    if product_id > len(products):
+        return "invalid product id", 500
+    hash = hashlib.md5(products[product_id].name.encode('utf-8')).hexdigest()
+    return hash
+    
